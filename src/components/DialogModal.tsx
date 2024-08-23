@@ -28,7 +28,7 @@ export default function DialogModal({ open }: DialogModalProps) {
     const [registerSuccess, setRegisterSuccess] = useState<boolean>(false);
 
     useEffect(() => {
-        // reset all values when dialog are closed
+        // reset all values when dialog modal is closed
         if (!open) {
             setFullName("");
             setEmail("");
@@ -60,6 +60,7 @@ export default function DialogModal({ open }: DialogModalProps) {
         async (event: SyntheticEvent) => {
             event.preventDefault();
 
+            // validate the inputs before sending to API, if error we will return early
             const result = validateFormInput(fullName, email, confirmEmail);
             if (result) {
                 setErrorMessage(result);
@@ -85,6 +86,7 @@ export default function DialogModal({ open }: DialogModalProps) {
                 });
                 setRegisterSuccess(result === "Registered");
             } catch (err: unknown) {
+                // all the errors will be handled in catch scope
                 const error = err as Error;
                 const errorText = error.toString();
                 // remove of "Bad Request: " in the beginning
@@ -96,6 +98,7 @@ export default function DialogModal({ open }: DialogModalProps) {
         [fullName, email, confirmEmail]
     );
 
+    // render the UI accordingly if successful and default UI
     function renderContent() {
         if (registerSuccess) {
             return (
@@ -116,6 +119,7 @@ export default function DialogModal({ open }: DialogModalProps) {
                     </Label>
                     <Input
                         placeholder="Enter your full name"
+                        aria-label="fullName-input"
                         name="fullName"
                         value={fullName}
                         className="col-span-3"
@@ -128,6 +132,7 @@ export default function DialogModal({ open }: DialogModalProps) {
                     </Label>
                     <Input
                         placeholder="Enter your email"
+                        aria-label="email-input"
                         name="email"
                         value={email}
                         className="col-span-3"
@@ -140,6 +145,7 @@ export default function DialogModal({ open }: DialogModalProps) {
                     </Label>
                     <Input
                         placeholder="Confirm your email"
+                        aria-label="confirmEmail-input"
                         name="confirmEmail"
                         value={confirmEmail}
                         className="col-span-3"

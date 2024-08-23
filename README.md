@@ -7,44 +7,35 @@ Currently, two official plugins are available:
 -   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 -   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Build and Running the app
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To run the app, the following Node and NPM version were used while in development:
 
--   Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-    languageOptions: {
-        // other options...
-        parserOptions: {
-            project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-            tsconfigRootDir: import.meta.dirname,
-        },
-    },
-});
+```
+Node.js: v22.6.0
+NPM: 10.8.2
 ```
 
--   Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
--   Optionally add `...tseslint.configs.stylisticTypeChecked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To build the app for production, in terminal of the root directory we will just use the following command:
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+```
+npm run build
+```
 
-export default tseslint.config({
-    // Set the react version
-    settings: { react: { version: "18.3" } },
-    plugins: {
-        // Add the react plugin
-        react,
-    },
-    rules: {
-        // other rules...
-        // Enable its recommended rules
-        ...react.configs.recommended.rules,
-        ...react.configs["jsx-runtime"].rules,
-    },
-});
+After building, it will generate static files in the dist/ directory, to run the app on localhost, just run the following:
+
+```
+npm run preview
+```
+
+## Testing
+
+Note: The app uses Shadcn/UI and the components are installed in the directory /common/ui
+
+The tests are in the directory /**tests** and folder structure follow the same folder structure as the original components from /src
+
+To run the tests, use the following command:
+
+```
+npm run test
 ```
