@@ -32,7 +32,7 @@ npm run preview
 
 Note: The app uses Shadcn/UI and the components are installed in the directory /common/ui
 
-The tests are in the directory /**tests** and folder structure follow the same folder structure as the original components from /src
+The tests are in the directory `/__tests__` and folder structure follow the same folder structure as the original components from /src
 
 To run the tests, use the following command:
 
