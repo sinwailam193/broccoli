@@ -22,7 +22,7 @@ To build the app for production, in terminal of the root directory we will just 
 npm run build
 ```
 
-After building, it will generate static files in the dist/ directory, to run the app on localhost, just run the following:
+After building, it will generate static files in the `/dist` directory, to run the app on localhost, just run the following:
 
 ```
 npm run preview
@@ -30,9 +30,9 @@ npm run preview
 
 ## Testing
 
-Note: The app uses Shadcn/UI and the components are installed in the directory /common/ui
+Note: The app uses Shadcn/UI and the components are installed in the directory `/common/ui`
 
-The tests are in the directory `/__tests__` and folder structure follow the same folder structure as the original components from /src
+The tests are in the directory `/__tests__` and folder structure follow the same folder structure as the original components from `/src`
 
 To run the tests, use the following command:
 
